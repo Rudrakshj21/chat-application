@@ -1,0 +1,23 @@
+#search ~ li:hover{
+    background-color:antiquewhite;
+}
+#search ~ li{
+ padding: 5px;
+ border-radius: 10px;
+ cursor: pointer;
+ transition: background-color 0.7s;   
+}
+body{
+font-family: cursive;
+    background-color:rgb(254, 180, 83);
+}
+nav{
+    background-color: rgb(231, 199, 158);
+}
+
+header{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    height: 120px;
+}
+

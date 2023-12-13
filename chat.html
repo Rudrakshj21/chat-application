@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/chat.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    #inputMessage::placeholder {
+      color: white;
+    }
+  </style>
+  <body>
+    <!-- LEFT SIDEBAR -->
+    <nav
+      class="navbar navbar-expand-lg d-flex align-items-start"
+      style="
+        width: 20.5rem;
+        height: 100vh;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+      "
+    >
+      <div
+        class="container-fluid d-flex flex-column justify-content-center align-items-center"
+      >
+        <a
+          class="navbar-brand fs-2 fw-bold text-primary"
+          id="brand"
+          href="#"
+          style="font-family: cursive"
+          >We Chat</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-start flex-column justify-content-start"
+            style="height: 100vh"
+            id="profileRow"
+          >
+            <li
+              class="nav-item mt-5 mb-5  fw-bold fs-5 d-flex align-items-center gap-3"
+              id="search"
+            >
+              <label class="form-label text-primary">Search</label>
+              <input type="text" class="form-control" id="searchPeople" />
+              <button class="btn btn-primary" id="searchButton">
+                <i class="bi bi-search"></i>
+              </button>
+            </li>
+            <!-- 1 user -->
+            <!-- <li
+              class="nav-item mt-5 fw-bold fs-5 d-flex align-items-start justify-content-center gap-3"
+            >
+              <img
+                src="gojo.jpg"
+                style="
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                "
+                alt=""
+              />  
+              <div>
+                <div>Rudraksh</div>
+                <div>latest message</div>
+              </div>
+              <div
+                class="bg-dark text-white d-flex align-items-center justify-content-center"
+                style="width: 25px; height: 25px; border-radius: 50%"
+              >
+                <span>2</span>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- RIGHT SIDEBAR  -->
+    <nav
+      class="navbar navbar-expand-lg d-flex align-items-start"
+      style="
+        width: 15.5rem;
+        height: 100vh;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+      "
+    >
+      <div
+        class="container-fluid d-flex flex-column justify-content-center align-items-center"
+      >
+        <img
+          id="avatar"
+          src="gojo.jpg"
+          class="mt-5"
+          alt=""
+          style="
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+          "
+        />
+        <!-- change avatar -->
+        <button
+          class="btn btn-dark mt-4 mb-4"
+          data-bs-toggle="modal"
+          data-bs-target="#profileModal"
+        >
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        <span
+          class="navbar-brand"
+          id="username"
+          href="#"
+          style="font-family: cursive"
+          >User</span
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul
+            class="navbar-nav me-auto mb-lg-0 d-flex align-items-center flex-column gap-4"
+            style="height: 100vh"
+          >
+            <li class="nav-item fw-bold fs-5 d-flex align-items-center">
+              <i class="bi bi-house"></i>
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+
+            <li class="nav-item fw-bold fs-5 d-flex align-items-center">
+              <i class="bi bi-chat-dots-fill"></i>
+              <a class="nav-link active" aria-current="page" href="#">Chat</a>
+            </li>
+
+            <li class="nav-item fw-bold fs-5 d-flex align-items-center">
+              <i class="bi bi-phone"></i>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item fw-bold fs-5 d-flex align-items-center">
+              <i class="bi bi-bell-fill"></i>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Notifications</a
+              >
+            </li>
+            <li class="nav-item fw-bold fs-5 d-flex align-items-center">
+              <i class="bi bi-calendar"></i>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Calender</a
+              >
+            </li>
+            <li class="nav-item fw-bold fs-5 d-flex align-items-center">
+              <i class="bi bi-gear-fill"></i>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Settings</a
+              >
+            </li>
+            <li class="nav-item fw-bold fs-5 d-flex align-items-center">
+              <button class="btn btn-danger" id="logoutBtn">
+                <i class="bi bi-box-arrow-right"></i>
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MID CHAT SECTION -->
+    <div
+      class="container mid-section"
+      style="height: 100vh; margin-left: 30.5rem; width: 45rem"
+    >
+      <!-- header row -->
+      <div class="row">
+        <header class="d-flex flex-column justify-content-center align-items-center mt-5">
+          <div class="fs-4 fw-bold text-nowrap mt-5" style="color:rgb(252, 57, 89); " >
+              Connect, Communicate, Collaborate
+            </div>
+          <div class="align-items-center d-flex">
+            <i class="bi bi-dot text-success" style="font-size:50px"></i>
+            <h1 id="receiverTitle"></h1>
+          </div>
+        </header>
+      </div>
+
+      <!-- message row -->
+      <div class="row mt-5" id="messageRow">
+        <!-- sender sample text -->
+        <!-- <div class="col-6 me-1 mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique provident tenetur ipsa hic reiciendis doloremque ex suscipit a neque quia vitae in tempore, dignissimos nesciunt nihil fuga quaerat dolorum quidem!</div> -->
+        <!--receiver sample text  -->
+        <!-- <div class="col-6 ms-auto mt-1 me-1 mb-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus distinctio dolores excepturi! Placeat, accusamus provident deserunt ex suscipit soluta quisquam consequuntur laudantium facere. Provident vel veritatis eos, hic ipsum facere?</div> -->
+      </div>
+      <!-- user msg -->
+      <div class="position-fixed" style="bottom: 0px">
+        <div class="row d-flex">
+          <input
+            style="
+              width: 44.8rem;
+              z-index: 100;
+              position: relative;
+              height: 45px;
+            "
+            type="text"
+            id="inputMessage"
+            class="form-control bg-dark text-white"
+            placeholder="Enter a message....."
+          />
+          <button
+            class="btn btn-primary mt-1"
+            style="
+              right: 0px;
+              position: absolute;
+              z-index: 101;
+              width: 5rem;
+              height: 40px;
+            "
+            id="sendMessageButton"
+          >
+            send
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="profileModal"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdrop"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Want to change your avatar?
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label">Pic your avatar</label>
+            <input type="file" id="imageFile" class="form-control" />
+            <button
+              class="btn btn-primary mt-4 disabled"
+              id="saveAvatar"
+              data-bs-dismiss="modal"
+            >
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/chat.js" defer type="module"></script>
+</html>
